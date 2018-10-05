@@ -5,9 +5,9 @@
     }, 
     "dependencies": {
         "iotdb-helpers": "~3.2.3", 
-        "azure": "~2.15.0"
+        "azure-storage": ""
     }, 
-    "description": "Pipe Oriented Programming", 
+    "description": "Microsoft Azure - POP",
     "devDependencies": {
     }, 
     "homepage": "https://github.com/dpjanes/node-iotdb", 
