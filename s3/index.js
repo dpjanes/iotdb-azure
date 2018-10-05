@@ -1,5 +1,5 @@
 /*
- *  lib/initialize.js
+ *  blob/index.js
  *
  *  David Janes
  *  IOTDB.org
@@ -22,26 +22,9 @@
 
 "use strict"
 
-const _ = require("iotdb-helpers")
-
-const assert = require("assert")
-
-/**
- *  Requires: self.azured
- *  Produces: self.azure
- */
-const initialize = _.promise.make((self, done) => {
-    const method = "initialize";
-
-    assert.ok(self.azured, `${method}: expected self.azured`)
-
-    self.azure = {
-    }
-
-    done(null, self)
-})
-
-/**
- *  API
- */
-exports.initialize = initialize
+module.exports = Object.assign(
+    {},
+    require("./initialize"),
+    require("./create_bucket"),
+    {}
+)

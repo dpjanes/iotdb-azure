@@ -1,5 +1,5 @@
 /*
- *  lib/initialize.js
+ *  s3/initialize.js
  *
  *  David Janes
  *  IOTDB.org
@@ -27,16 +27,11 @@ const _ = require("iotdb-helpers")
 const assert = require("assert")
 
 /**
- *  Requires: self.azured
+ *  Requires: self.azure
  *  Produces: self.azure
  */
 const initialize = _.promise.make((self, done) => {
-    const method = "initialize";
-
-    assert.ok(self.azured, `${method}: expected self.azured`)
-
-    self.azure = {
-    }
+    const method = "s3.initialize";
 
     done(null, self)
 })
