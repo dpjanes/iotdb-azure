@@ -24,7 +24,8 @@
 
 module.exports = Object.assign(
     {},
-    require("./initialize"),
     require("./create_bucket"),
+    require("./initialize"),
+    require("./upload_document"),
     {}
 )

@@ -1,5 +1,5 @@
 /*
- *  lib/initialize.js
+ *  samples/create_bucket.js
  *
  *  David Janes
  *  IOTDB.org
@@ -23,27 +23,18 @@
 "use strict"
 
 const _ = require("iotdb-helpers")
+const azure = require("..")
 
-const assert = require("assert")
-
-/**
- *  Requires: self.azured
- *  Produces: self.azure
- */
-const initialize = _.promise.make((self, done) => {
-    const method = "initialize";
-
-    assert.ok(self.azured, `${method}: expected self.azured`)
-
-    self.azure = {
-        "accountName": self.azured.accountName,
-        "accountKey": self.azured.accountKey,
-    }
-
-    done(null, self)
+_.promise.make({
+    azured: require("./azure.json"),
+    bucket: "taskcontainer",
 })
-
-/**
- *  API
- */
-exports.initialize = initialize
+    .then(azure.initialize)
+    .then(azure.s3.initialize)
+    .then(azure.s3.create_bucket)
+    .then(_.promise.make(sd => {
+        console.log("+", "done", sd.bucket_url)
+    }))
+    .catch(error => {
+        console.log("#", _.error.message(error))
+    })

@@ -1,5 +1,5 @@
 /*
- *  s3/create_bucket.js
+ *  s3/upload_document.js
  *
  *  David Janes
  *  IOTDB.org
@@ -32,8 +32,8 @@ const azure = require("azure-storage")
  *  Requires: self.azure
  *  Produces: 
  */
-const create_bucket = _.promise.make((self, done) => {
-    const method = "s3.create_bucket";
+const upload_document = _.promise.make((self, done) => {
+    const method = "s3.upload_document";
 
     assert.ok(self.azure, `${method}: expected self.azure`)
     assert.ok(self.azure.accountName, `${method}: expected self.azure.accountName`)
@@ -60,4 +60,4 @@ const create_bucket = _.promise.make((self, done) => {
 /**
  *  API
  */
-exports.create_bucket = create_bucket
+exports.upload_document = upload_document
